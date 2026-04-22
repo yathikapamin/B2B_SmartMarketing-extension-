@@ -144,4 +144,3 @@ For deep dives into specific areas, refer to the following guides in the `docs/`
 
 ---
 
-Built with ❤️ for professional outreach.
