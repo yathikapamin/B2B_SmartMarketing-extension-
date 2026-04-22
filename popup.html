@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Contact Scraper</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Contact Scraper</h1>
+    </header>
+
+    <!-- Loading State -->
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Scanning page for contacts...</p>
+    </div>
+
+    <!-- Contacts Display -->
+    <div id="contacts-section" class="contacts-section hidden">
+      <h2>Found Contacts</h2>
+      
+      <div class="contact-group">
+        <label>Company Emails:</label>
+        <div id="emails-list" class="contact-list"></div>
+      </div>
+
+      <div class="contact-group">
+        <label>LinkedIn Profiles:</label>
+        <div id="linkedin-list" class="contact-list"></div>
+      </div>
+
+      <div class="contact-group">
+        <label>WhatsApp Contacts:</label>
+        <div id="whatsapp-list" class="contact-list"></div>
+      </div>
+
+      <div class="action-buttons">
+        <button id="send-email-btn" class="action-btn email-btn">
+          Send Email
+        </button>
+        <button id="send-whatsapp-btn" class="action-btn whatsapp-btn">
+          WhatsApp
+        </button>
+        <button id="send-linkedin-btn" class="action-btn linkedin-btn">
+          LinkedIn
+        </button>
+      </div>
+    </div>
+
+    <!-- No Contacts Found -->
+    <div id="no-contacts" class="no-contacts hidden">
+      <p>No contact information found on this page.</p>
+      <p class="hint">Try visiting a company's contact or about page.</p>
+    </div>
+
+    <!-- Email Form -->
+    <div id="email-form" class="email-form hidden">
+      <h2>Send Collaboration Email</h2>
+      
+      <div class="form-group">
+        <label for="sender-name">Your Name:</label>
+        <input type="text" id="sender-name" placeholder="John Doe" required>
+      </div>
+
+      <div class="form-group">
+        <label for="sender-email">Your Email:</label>
+        <input type="email" id="sender-email" placeholder="john@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="recipient-email">Send To:</label>
+        <select id="recipient-email" required>
+          <option value="">Select email...</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message-text">Message:</label>
+        <textarea id="message-text" rows="6" placeholder="Hi, I'd like to discuss a potential collaboration opportunity..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="pdf-upload">Attach PDF (Optional):</label>
+        <div class="file-upload-wrapper">
+          <input type="file" id="pdf-upload" accept=".pdf" class="file-input">
+          <label for="pdf-upload" class="file-label">
+            <span id="file-name">Choose PDF file...</span>
+            <span class="file-icon">📎</span>
+          </label>
+          <button id="clear-file" class="clear-file-btn hidden">✕</button>
+        </div>
+        <small class="hint">Max size: 10MB</small>
+      </div>
+
+      <div class="form-actions">
+        <button id="send-btn" class="primary-btn">Send Email</button>
+        <button id="cancel-btn" class="secondary-btn">Cancel</button>
+      </div>
+
+      <div id="email-status" class="status-message hidden"></div>
+    </div>
+
+    <!-- WhatsApp Form -->
+    <div id="whatsapp-form" class="whatsapp-form hidden">
+      <h2>Send WhatsApp Message</h2>
+      
+      <div class="form-group">
+        <label for="whatsapp-contact">Send To:</label>
+        <select id="whatsapp-contact" required>
+          <option value="">Select WhatsApp contact...</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="whatsapp-message">Message (Optional - for reference):</label>
+        <textarea id="whatsapp-message" rows="6" placeholder="Write your message here for reference... You'll type it in WhatsApp"></textarea>
+      </div>
+
+      <div class="info-box">
+        <p><strong>Chat opens directly:</strong> WhatsApp chat window will open.</p>
+        <p><strong>Type your message there:</strong> Compose your message in WhatsApp.</p>
+        <p><strong>Attach PDF:</strong> Click attachment icon to share files.</p>
+      </div>
+
+      <div class="form-actions">
+        <button id="send-whatsapp" class="primary-btn whatsapp-btn">Open WhatsApp</button>
+        <button id="cancel-whatsapp" class="secondary-btn">Cancel</button>
+      </div>
+
+      <div id="whatsapp-status" class="status-message hidden"></div>
+    </div>
+
+    <!-- LinkedIn Form -->
+    <div id="linkedin-form" class="linkedin-form hidden">
+      <h2>Send LinkedIn Message</h2>
+      
+      <div class="form-group">
+        <label for="linkedin-profile">Send To:</label>
+        <select id="linkedin-profile" required>
+          <option value="">Select LinkedIn profile...</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="linkedin-message">Message (Optional - for reference):</label>
+        <textarea id="linkedin-message" rows="6" placeholder="Write your message here for reference... You'll type it in LinkedIn"></textarea>
+      </div>
+
+      <div class="info-box">
+        <p><strong>Profile opens directly:</strong> LinkedIn profile will open in new tab.</p>
+        <p><strong>Type your message there:</strong> Click "Message" and compose in LinkedIn.</p>
+        <p><strong>Share files:</strong> Use LinkedIn's attachment feature to share documents.</p>
+      </div>
+
+      <div class="form-actions">
+        <button id="send-linkedin" class="primary-btn linkedin-btn">Open LinkedIn</button>
+        <button id="cancel-linkedin" class="secondary-btn">Cancel</button>
+      </div>
+
+      <div id="linkedin-status" class="status-message hidden"></div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
