@@ -71,7 +71,7 @@ The backend handles secure email delivery through SMTP.
     npm start
     ```
 
-### 2. Chrome Extension Setup
+### 2. Chrome Extension Setup.
 
 1.  Open Chrome and navigate to `chrome://extensions/`.
 2.  Enable **Developer mode** in the top-right corner.
